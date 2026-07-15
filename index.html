@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Engineer | Portfolio</title>
+<meta name="description" content="Software engineer with 20+ years in mission-critical embedded systems, now building AI and data systems. RAG, LLM apps, data pipelines.">
+<style>
+  :root {
+    --ink: #1a2332;
+    --body: #3d4757;
+    --muted: #6b7484;
+    --line: #e4e7ec;
+    --bg: #ffffff;
+    --bg-soft: #f6f8fa;
+    --accent: #1f5eff;
+    --accent-soft: #eaf0ff;
+    --radius: 12px;
+    --max: 920px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--body); background: var(--bg); line-height: 1.65; font-size: 16.5px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+  nav { position: sticky; top: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 10; }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; }
+  nav .logo { font-weight: 700; color: var(--ink); font-size: 17px; text-decoration: none; }
+  nav ul { display: flex; gap: 24px; list-style: none; }
+  nav a { text-decoration: none; color: var(--muted); font-size: 14.5px; }
+  nav a:hover { color: var(--accent); }
+
+  header { padding: 80px 0 64px; }
+  .kicker { color: var(--accent); font-weight: 600; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+  h1 { color: var(--ink); font-size: 42px; line-height: 1.15; font-weight: 750; margin-bottom: 18px; }
+  .tagline { font-size: 18.5px; max-width: 660px; margin-bottom: 28px; }
+  .cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 11px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #174ad0; }
+  .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  section { padding: 56px 0; border-top: 1px solid var(--line); }
+  h2 { color: var(--ink); font-size: 27px; margin-bottom: 8px; }
+  .sub { color: var(--muted); margin-bottom: 34px; font-size: 15.5px; }
+
+  /* ---------- project case studies ---------- */
+  .project { border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; margin-bottom: 26px; background: #fff; }
+  .project .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 4px; }
+  .project h3 { color: var(--ink); font-size: 21px; }
+  .project .links { display: flex; gap: 12px; }
+  .project .links a { font-size: 14px; font-weight: 600; color: var(--accent); text-decoration: none; border: 1.5px solid var(--accent-soft); background: var(--accent-soft); padding: 5px 14px; border-radius: 999px; }
+  .project .links a:hover { background: var(--accent); color: #fff; }
+  .project .oneliner { color: var(--muted); font-size: 15px; margin-bottom: 18px; }
+  .pipeline { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 4px 0 20px; }
+  .step { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 7px; padding: 5px 12px; font-size: 13px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .arrow { color: var(--muted); font-size: 13px; }
+  .project .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; }
+  .project .blk h4 { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .project .blk p { font-size: 15px; margin-bottom: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .tag { background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; }
+
+  /* ---------- experience timeline ---------- */
+  .tl { position: relative; margin-left: 8px; padding-left: 28px; border-left: 2px solid var(--line); }
+  .tl-item { position: relative; padding-bottom: 26px; }
+  .tl-item::before { content: ""; position: absolute; left: -35px; top: 7px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); border: 2.5px solid #fff; box-shadow: 0 0 0 2px var(--accent); }
+  .tl-item .when { font-size: 13.5px; color: var(--muted); }
+  .tl-item h3 { color: var(--ink); font-size: 17px; margin: 2px 0 6px; }
+  .tl-item h3 span { color: var(--accent); font-weight: 600; font-size: 15px; }
+  .tl-item p { font-size: 15px; max-width: 720px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .chip { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 999px; font-size: 12.5px; font-weight: 600; color: var(--ink); padding: 4px 12px; }
+  .chip b { color: var(--accent); }
+
+  .skillgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .skillbox { background: var(--bg-soft); border-radius: var(--radius); padding: 20px 22px; }
+  .skillbox h3 { color: var(--ink); font-size: 15px; margin-bottom: 10px; }
+  .skillbox .tag { background: #fff; border: 1px solid var(--line); color: var(--body); font-weight: 500; font-size: 12.5px; }
+
+  .cert { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; }
+  .cert:last-child { border-bottom: none; }
+  .cert b { color: var(--ink); font-weight: 600; }
+  .cert span { color: var(--muted); font-size: 14px; white-space: nowrap; }
+
+  footer { border-top: 1px solid var(--line); padding: 46px 0 60px; }
+  footer h2 { margin-bottom: 14px; }
+  .contact-row { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 18px; font-size: 15.5px; }
+  .contact-row a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .contact-row a:hover { text-decoration: underline; }
+  .fineprint { margin-top: 34px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    h1 { font-size: 30px; }
+    .project .cols { grid-template-columns: 1fr; }
+    nav ul { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Portfolio</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="kicker">Software Engineer · Embedded Systems → Data Science & AI</div>
+    <h1>I've shipped code that engines depend on.<br>Now I build AI systems the same way.</h1>
+    <p class="tagline">Twenty years of mission-critical embedded software taught me to design for failure, test relentlessly, and own delivery end to end. I now apply that discipline to LLM applications, RAG systems, and data pipelines: built, deployed, and documented below.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#projects">See my work</a>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Featured Projects</h2>
+    <p class="sub">Built end to end: architecture, code, deployment, and the decisions behind them.</p>
+
+    <!-- Project 1 -->
+    <div class="project">
+      <div class="head">
+        <h3>Classic RAG System, Fully Local</h3>
+        <div class="links">
+          <a href="https://github.com/kealeee/RAG" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="oneliner">A Retrieval-Augmented Generation system that answers questions over your documents with no cloud LLM required, and shows its reasoning.</p>
+      <div class="pipeline">
+        <span class="step">Ingest</span><span class="arrow">→</span>
+        <span class="step">Chunk (LangChain)</span><span class="arrow">→</span>
+        <span class="step">Embed → ChromaDB</span><span class="arrow">→</span>
+        <span class="step">Query rewrite</span><span class="arrow">→</span>
+        <span class="step">Rerank (Cohere)</span><span class="arrow">→</span>
+        <span class="step">Generate (flan-t5)</span><span class="arrow">→</span>
+        <span class="step">Decision trace</span>
+      </div>
+      <div class="cols">
+        <div class="blk">
+          <h4>The problem</h4>
+          <p>Most RAG demos lean on paid cloud LLMs and behave like black boxes: when an answer is wrong, you cannot see whether retrieval, ranking, or generation failed.</p>
+          <h4>What I built</h4>
+          <p>A complete local pipeline: document ingestion and chunking with LangChain, vector search on ChromaDB, query rewriting to improve recall, Cohere reranking for precision, and answer generation with HuggingFace flan-t5 running locally. Served through a FastAPI backend with a single-page UI.</p>
+        </div>
+        <div class="blk">
+          <h4>What makes it different</h4>
+          <p>A dedicated decision-trace tab exposes every stage: which chunks were retrieved, how the query was rewritten, how reranking reordered candidates, and what context reached the generator. Explainability is a feature, not an afterthought — a habit from two decades of diagnosing systems that had to tell you why they failed.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">ChromaDB</span><span class="tag">Cohere</span><span class="tag">FastAPI</span><span class="tag">HuggingFace</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project">
+      <div class="head">
+        <h3>Bedtime Story Generator, Deployed Fullstack</h3>
+        <div class="links">
+          <a href="https://github.com/kealeee/bed-time-story-fullstack" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="oneliner">A live, production-deployed AI app that generates personalised children's stories, spanning three cloud services.</p>
+      <div class="pipeline">
+        <span class="step">Frontend (Vercel)</span><span class="arrow">→</span>
+        <span class="step">FastAPI (Render)</span><span class="arrow">→</span>
+        <span class="step">Gemini API</span><span class="arrow">→</span>
+        <span class="step">PostgreSQL (managed)</span>
+      </div>
+      <div class="cols">
+        <div class="blk">
+          <h4>The problem</h4>
+          <p>A notebook demo is not a product. I wanted the full journey: an AI feature that real users can reach at a URL, with persistence, across independently deployed services.</p>
+          <h4>What I built</h4>
+          <p>Google Gemini generates stories personalised by the child's name, age, and theme through structured prompt engineering. A FastAPI backend on Render handles generation and persistence to a managed PostgreSQL database; a static frontend on Vercel keeps the user experience fast and hosting free.</p>
+        </div>
+        <div class="blk">
+          <h4>What makes it different</h4>
+          <p>It exercises the unglamorous parts most AI demos skip: CORS between separately hosted frontend and backend, environment and secret management across two platforms, cold-start behaviour on free-tier hosting, and a database schema for generated content. Deployment is part of the engineering, not an afterthought.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Gemini API</span><span class="tag">PostgreSQL</span><span class="tag">Vercel</span><span class="tag">Render</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project">
+      <div class="head">
+        <h3>Olist E-Commerce Data Pipeline</h3>
+        <div class="links">
+          <a href="https://github.com/kealeee/olist-data-pipeline" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+      <p class="oneliner">A production-grade ELT pipeline over the Brazilian Olist e-commerce dataset, built collaboratively with automated quality gates.</p>
+      <div class="pipeline">
+        <span class="step">Ingest → PostgreSQL</span><span class="arrow">→</span>
+        <span class="step">Transform (dbt)</span><span class="arrow">→</span>
+        <span class="step">Validate (Great Expectations)</span><span class="arrow">→</span>
+        <span class="step">CI/CD (GitHub Actions)</span>
+      </div>
+      <div class="cols">
+        <div class="blk">
+          <h4>The problem</h4>
+          <p>Raw e-commerce data across many linked tables (orders, items, payments, reviews, geolocation) is unusable for analytics until it is ingested, modelled, and, critically, trusted.</p>
+          <h4>My contribution</h4>
+          <p>Within the team I owned data ingestion into PostgreSQL, transformation models in dbt, and data quality validation with Great Expectations, wired into a GitHub Actions CI/CD workflow so every change is tested before it lands.</p>
+        </div>
+        <div class="blk">
+          <h4>What makes it different</h4>
+          <p>Quality is enforced, not hoped for: expectations run automatically in CI, so schema drift and bad data fail the build instead of reaching the warehouse. The same instinct that drove my automated smoke-testing framework in automotive production applies unchanged to data engineering.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">dbt</span><span class="tag">Great Expectations</span><span class="tag">GitHub Actions</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills</h2>
+    <p class="sub">Depth in embedded software engineering, current breadth across AI and data.</p>
+    <div class="skillgrid">
+      <div class="skillbox">
+        <h3>Languages</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Embedded C/C++</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">Assembly</span></div>
+      </div>
+      <div class="skillbox">
+        <h3>AI / ML</h3>
+        <div class="tags"><span class="tag">RAG</span><span class="tag">LLM APIs</span><span class="tag">LangChain</span><span class="tag">PyTorch</span><span class="tag">Prompt Engineering</span><span class="tag">Agentic AI</span></div>
+      </div>
+      <div class="skillbox">
+        <h3>Data & Cloud</h3>
+        <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">dbt</span><span class="tag">Great Expectations</span><span class="tag">ChromaDB</span><span class="tag">MongoDB</span><span class="tag">AWS</span></div>
+      </div>
+      <div class="skillbox">
+        <h3>Engineering Practice</h3>
+        <div class="tags"><span class="tag">Software Architecture</span><span class="tag">CI/CD</span><span class="tag">Cybersecurity</span><span class="tag">Code Review</span><span class="tag">Testing & Validation</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <div class="contact-row">
+      <a href="mailto:kean.hin.lee@gmail.com">kean.hin.lee@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
